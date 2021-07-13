@@ -1,0 +1,32 @@
+{
+  "name": "spotify-analytics",
+  "private": true,
+  "version": "1.0.0",
+  "description": "spotify analytics for artists",
+  "workspaces": [
+    "api",
+    "cdk",
+    "test",
+    "ui"
+  ],
+  "scripts": {
+    "test": "yarn test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pkrisko/spotify-analytics.git"
+  },
+  "keywords": [
+    "spotify",
+    "analytics",
+    "cdk",
+    "react",
+    "typescript"
+  ],
+  "author": "Patrick Krisko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pkrisko/spotify-analytics/issues"
+  },
+  "homepage": "https://github.com/pkrisko/spotify-analytics#readme"
+}
