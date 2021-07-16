@@ -10,7 +10,8 @@
     "ui"
   ],
   "scripts": {
-    "test": "yarn test"
+    "test": "yarn test",
+    "clean": "rm -rf node_modules && rm -rf */node_modules"
   },
   "repository": {
     "type": "git",
