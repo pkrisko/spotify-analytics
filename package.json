@@ -29,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/pkrisko/spotify-analytics/issues"
   },
-  "homepage": "https://github.com/pkrisko/spotify-analytics#readme"
+  "homepage": "https://github.com/pkrisko/spotify-analytics#readme",
+  "dependencies": {
+    "concurrently": "^6.2.0"
+  }
 }

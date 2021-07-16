@@ -5,6 +5,10 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 
+# CDK
+**/template.yaml
+**/package-lock.json
+
 # Logs
 logs
 *.log

@@ -2,7 +2,11 @@
     "name": "api",
     "version": "0.1.0",
     "private": true,
+    "scripts": {
+      "start": "sam local start-api -p 3001"
+    },
     "dependencies": {
-      "cross-env": "5.0.5"
+      "cross-env": "5.0.5",
+      "jest": "26.6.0"
     }
   }

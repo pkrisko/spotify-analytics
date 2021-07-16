@@ -11,7 +11,7 @@
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
-    "synth": "cdk synth --no-staging > template.yaml"
+    "synth": "cdk synth --no-staging > ../api/template.yaml"
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.113.0",
