@@ -14,7 +14,14 @@ import { IndexPage } from './pages/index';
 import { LoginPage } from './pages/login/login';
 import { ProtectedRoute } from './util/auth/protected-route';
 
+const getHealth = async () => {
+  const res = await fetch('/api/health');
+  const json = await res.json();
+  console.log('res', json);
+}
+
 function App() {
+  getHealth();
   return (
     <ProvideAuth>
       <Router>
@@ -28,7 +35,6 @@ function App() {
               <Link to="/protected">Protected Page</Link>
             </li>
           </ul>
-
           <Switch>
             <Route path="/public">
               <IndexPage />

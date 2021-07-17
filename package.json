@@ -4,10 +4,9 @@
   "version": "1.0.0",
   "description": "spotify analytics for artists",
   "workspaces": [
-    "api",
-    "cdk",
     "test",
-    "ui"
+    "ui",
+    "nextjs"
   ],
   "scripts": {
     "test": "yarn test",
@@ -21,9 +20,9 @@
   "keywords": [
     "spotify",
     "analytics",
-    "cdk",
     "react",
-    "typescript"
+    "nextjs",
+    "nodejs"
   ],
   "author": "Patrick Krisko",
   "license": "ISC",
