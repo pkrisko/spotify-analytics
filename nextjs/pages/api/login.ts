@@ -18,7 +18,7 @@ const generateRandomString = (length: number): string => {
   return text;
 };
 
-const stateKey = 'spotify_auth_state'
+const stateKey: string = 'spotify_auth_state'
 const keys: string[] = ['stateKey'];
 
 export default function handler(
@@ -26,7 +26,7 @@ export default function handler(
   res: NextApiResponse
 ) {
   const cookies = new Cookies(req, res, { keys });
-  const state:string = generateRandomString(16);
+  const state: string = generateRandomString(16);
   cookies.set(stateKey, state);
   const searchParams = new URLSearchParams({
     response_type: 'code',
@@ -35,6 +35,5 @@ export default function handler(
     redirect_uri: 'http://localhost:3000',
     state: state
   }).toString();
-  console.log(searchParams);
   res.redirect(`https://accounts.spotify.com/authorize?${searchParams}`);
 }

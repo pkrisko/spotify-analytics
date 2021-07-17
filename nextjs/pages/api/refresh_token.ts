@@ -18,7 +18,7 @@ export default async function handler(
     url: 'https://accounts.spotify.com/api/token',
     headers: {
         'Authorization': `Basic ${(new Buffer(auth).toString('base64'))}`
-    },
+},
     form: {
       grant_type: 'refresh_token',
       refresh_token
