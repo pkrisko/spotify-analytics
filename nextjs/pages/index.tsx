@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
+import { useAuth, Tokens } from '../utils/auth/auth';
 
 const getHashParams = () => {
   const hashParams: any = {};
@@ -12,7 +14,42 @@ const getHashParams = () => {
   return hashParams;
 }
 
+const getSearchParams = () => {
+  return new URLSearchParams(window.location.search);
+};
+
 export default function Home() {
+  const auth = useAuth();
+  const { accessToken, refreshToken } = auth.tokens;
+  const [data, setData] = useState('');
+
+  const getUserData = async (accessToken: string) => {
+    const response = await fetch('https://api.spotify.com/v1/me', {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      }
+    });
+    const json = await response.json();
+    return json;
+    setData(json);
+  }
+
+  useEffect(() => {
+    const { access_token, refresh_token } = getHashParams();
+    if (access_token && refresh_token) {
+      const tokens: Tokens = {
+        accessToken: access_token,
+        refreshToken: refresh_token,
+      }
+      auth.storeTokens(tokens);
+      getUserData(access_token);
+      // Remove hash params, take user to next page? 
+    }
+    const searchParams = getSearchParams();
+    if (searchParams.get('code') && searchParams.get('state')) {
+      window.location.replace(`/api/callback?${searchParams}`);
+    }
+  }, []);
   return (
     <div className={styles.container}>
       <Head>
@@ -31,6 +68,10 @@ export default function Home() {
           <code className={styles.code}>pages/index.js</code>
         </p>
 
+        <a href="/api/login">Login</a>
+        <p>{accessToken}</p>
+        <p>{refreshToken}</p>
+        <p>{data && JSON.stringify(data)}</p>
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>
