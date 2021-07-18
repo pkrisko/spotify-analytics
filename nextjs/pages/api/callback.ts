@@ -43,14 +43,7 @@ export default async function handler(
                 options
             );
             const { access_token, refresh_token } = response.data;
-            // use the access token to access the Spotify Web API
-            const { data } = await axios.get('https://api.spotify.com/v1/me', {
-                headers: {
-                    'Authorization': `Bearer ${access_token}`
-                }
-            });
-            console.info('user data', data);
-            // we can also pass the token to the browser to make requests from there
+            // pass the token to the browser to make requests from there
             res.redirect(`/#${new URLSearchParams({ access_token, refresh_token }).toString()}`);
         } catch (err) {
             console.error('axios encounterered error', err);

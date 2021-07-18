@@ -4,8 +4,6 @@ import axios from 'axios';
 
 const client_id = process.env.CLIENT_ID || '';
 const client_secret = process.env.CLIENT_SECRET || '';
-const stateKey = 'spotify_auth_state';
-const keys: string[] = ['stateKey'];
 
 export default async function handler(
   req: NextApiRequest,
@@ -18,7 +16,7 @@ export default async function handler(
     url: 'https://accounts.spotify.com/api/token',
     headers: {
         'Authorization': `Basic ${(new Buffer(auth).toString('base64'))}`
-},
+    },
     form: {
       grant_type: 'refresh_token',
       refresh_token
@@ -29,11 +27,9 @@ export default async function handler(
   try {
     const response = await axios(authOptions);
     var access_token = response.data.access_token;
-    res.send({
-      'access_token': access_token
-    });
+    res.send({ access_token });
   } catch(err) {
     console.error('some err');
-    res.send('lol');
+    res.send('error');
   }
 }

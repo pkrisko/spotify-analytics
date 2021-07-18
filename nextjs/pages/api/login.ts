@@ -1,8 +1,9 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
 import Cookies from 'cookies';
 
 const client_id = process.env.CLIENT_ID || '';
+const stateKey: string = 'spotify_auth_state'
+const keys: string[] = ['stateKey'];
 
 /**
  * Generates a random string containing numbers and letters
@@ -17,9 +18,6 @@ const generateRandomString = (length: number): string => {
   }
   return text;
 };
-
-const stateKey: string = 'spotify_auth_state'
-const keys: string[] = ['stateKey'];
 
 export default function handler(
   req: NextApiRequest,
